@@ -1,0 +1,40 @@
+#include<stdio.h>
+int main()
+{
+    int n,sum,l=0,r=0,s;
+    printf("Array Size : ");
+    scanf("%d",&n);
+    printf("Enter %d Aray Elements : ",n);
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    printf("Enter subarray sum : ");
+    scanf("%d",&sum);
+    s=a[l]+a[r];
+    loop:
+    if (l>=n || r>=n)
+    goto end1;
+    if(s==sum)
+    {
+        printf("%d",sum);
+        goto end2;
+    }
+    else if(s<sum)
+    {
+        r++;
+        s=s+a[r];
+        goto loop;
+    }
+    else if(s>sum)
+    {
+        l++;
+        s=s-a[l-1];
+        goto loop;
+    }
+    end1:
+    printf("0");
+    end2:
+    return 0;
+}
